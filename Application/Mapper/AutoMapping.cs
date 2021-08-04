@@ -13,9 +13,9 @@ namespace Application.Mapper
         public AutoMapping()
         {
             CreateMap<Building, BuildingDto>();
-            CreateMap<BuildingDto, Building>();// means you want to map from User to UserDTO
-            CreateMap<Building, CreateBuilding>();// means you want to map from User to UserDTO
-            CreateMap<CreateBuilding, Building>();// means you want to map from User to UserDTO
+            CreateMap<BuildingDto, Building>();
+            CreateMap<Building, CreateBuilding>();
+            CreateMap<CreateBuilding, Building>();
         }
     }
 }
