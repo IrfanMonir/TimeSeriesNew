@@ -31,6 +31,7 @@ namespace Infrastructure.Services
         public async Task<List<Building>> GetBuildingList()
         {
             var list = await _dbContext.Buildings.ToListAsync();
+
             return list;
         }
 

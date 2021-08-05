@@ -4,6 +4,8 @@ using Application.DataFields;
 using Application.DataFields.Command;
 using Application.Objects;
 using Application.Objects.Command;
+using Application.Readings;
+
 using AutoMapper;
 using Domain.Entities;
 using System;
@@ -16,6 +18,7 @@ namespace Application.Mapper
     {
         public AutoMapping()
         {
+            CreateMap<Reading, ReadingsDto>();
             CreateMap<Building, BuildingDto>();
             CreateMap<BuildingDto, Building>();
             CreateMap<Building, CreateBuilding>();
