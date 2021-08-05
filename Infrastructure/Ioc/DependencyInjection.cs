@@ -1,4 +1,5 @@
 ﻿using Application.Buildings;
+using Application.DataFields;
 using Application.Objects;
 using Infrastructure.Persistence;
 using Infrastructure.Services;
@@ -17,6 +18,7 @@ namespace Infrastructure.Ioc
         {
             services.AddTransient<IBuildingService, BuildingService>();
             services.AddTransient<IObjectsService, ObjectService>();
+            services.AddTransient<IDataFieldService, DataFieldService>();
             return services;
         }
     }

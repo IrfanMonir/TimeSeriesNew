@@ -1,5 +1,7 @@
 ﻿using Application.Buildings;
 using Application.Buildings.Command;
+using Application.DataFields;
+using Application.DataFields.Command;
 using Application.Objects;
 using Application.Objects.Command;
 using AutoMapper;
@@ -22,6 +24,10 @@ namespace Application.Mapper
             CreateMap<CreateObject, Domain.Entities.Object>();
             CreateMap<Domain.Entities.Object, ObjectsDto>();
             CreateMap<ObjectsDto, Domain.Entities.Object>();
+            CreateMap<DataField, DataFieldsDto>();
+            CreateMap<DataFieldsDto, DataField>();
+            CreateMap<DataField, CreateDataField>();
+            CreateMap<CreateDataField, DataField>();
         }
     }
 }

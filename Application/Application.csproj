@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -30,6 +30,7 @@
   <ItemGroup>
     <Folder Include="Buildings\Command\" />
     <Folder Include="Common\Models\" />
+    <Folder Include="DataFields\Query\" />
     <Folder Include="Mapper\" />
   </ItemGroup>
 
