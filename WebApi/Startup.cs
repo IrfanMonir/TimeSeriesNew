@@ -1,5 +1,7 @@
 using Application.Buildings;
+using Application.Ioc;
 using AutoMapper;
+using Infrastructure.Ioc;
 using Infrastructure.Persistence;
 using Infrastructure.Services;
 using MediatR;
@@ -39,14 +41,14 @@ namespace WebApi
             });
             services.AddControllers();
             services.AddCors();
-            services.AddDbContext<ApplicationDbContext>(options =>
-               options.UseSqlServer(
-                   Configuration.GetConnectionString("DefaultConnection")));
-            services.AddTransient<IBuildingService, BuildingService>();
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddMediatR(Assembly.GetExecutingAssembly());
 
-            
+            services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+
+            services.AddApplication();
+            services.AddInfrastructure();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

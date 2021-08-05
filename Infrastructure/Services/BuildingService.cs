@@ -29,11 +29,6 @@ namespace Infrastructure.Services
             //throw new NotImplementedException();
         }
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<List<Building>> GetBuildingList()
         {
             throw new NotImplementedException();
@@ -62,5 +57,10 @@ namespace Infrastructure.Services
         //    //throw new Exception();
         //    return Result.Failure(new List<string> { "Data insert failed" });
         //}
+
+        public void Dispose()
+        {
+            _dbContext.DisposeAsync();
+        }
     }
 }
