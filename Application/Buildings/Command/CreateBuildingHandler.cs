@@ -19,23 +19,13 @@ namespace Application.Buildings.Command
             _buildingService = buildingService;
             _mapper = mapper;
         }
-        //public async Task<Result> Handle(CreateBuilding request)
-        //{
-        //    var basicType = new BasicType
-        //    {
-        //        Id = request.Id,
-        //        KeyName = request.KeyName
-        //    };
-        //    var result = await _buildingService.CreateBuilding(basicType);
 
-        //    return result;
-        //}
         public async Task<Result> Handle(CreateBuilding request, CancellationToken cancellationToken)
         {
             var building = _mapper.Map<Building>(request);
             var result = await _buildingService.CreateBuilding(building);
             return result;
-            //throw new NotImplementedException();
+            
         }
     }
 }

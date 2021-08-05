@@ -1,4 +1,5 @@
 ﻿using Application.Buildings;
+using Application.Objects;
 using Infrastructure.Persistence;
 using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ namespace Infrastructure.Ioc
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddTransient<IBuildingService, BuildingService>();
+            services.AddTransient<IObjectsService, ObjectService>();
             return services;
         }
     }

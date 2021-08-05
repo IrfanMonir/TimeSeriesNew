@@ -1,5 +1,4 @@
-﻿using Application.Buildings.Command;
-using Application.Buildings.Query;
+﻿using Application.Objects.Command;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,17 +11,17 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class BuildingController : ControllerBase
+    public class ObjectsController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public BuildingController(IMediator mediator)
+        public ObjectsController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
         [HttpPost]
-        [ActionName("CreateBuilding")]
-        public async Task<IActionResult> CreateBuilding(CreateBuilding command)
+        [ActionName("CreateObject")]
+        public async Task<IActionResult> CreateObject(CreateObject command)
         {
 
             var result = await _mediator.Send(command);
@@ -31,12 +30,6 @@ namespace WebApi.Controllers
                 return StatusCode(201);
 
             return BadRequest(result.Errors);
-        }
-        [HttpGet]
-        [ActionName("GetBuildingList")]
-        public async Task<IActionResult> GetBuildingList()
-        {
-            return Ok(await _mediator.Send(new BuildingList()));
         }
     }
 }
