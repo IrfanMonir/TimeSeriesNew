@@ -1,6 +1,7 @@
 ﻿using Application.Common.Models;
 using Application.Objects;
 using Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,9 +25,10 @@ namespace Infrastructure.Services
             return Result.Failure(new List<string> { "Data insert failed" });
         }
 
-        public Task<List<Domain.Entities.Object>> GetObjectList()
+        public async Task<List<Domain.Entities.Object>> GetObjectList()
         {
-            throw new NotImplementedException();
+            var list = await _dbContext.Objects.ToListAsync();
+            return list;
         }
 
         public void Dispose()

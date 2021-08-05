@@ -1,4 +1,5 @@
 ﻿using Application.Objects.Command;
+using Application.Objects.Query;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,12 @@ namespace WebApi.Controllers
                 return StatusCode(201);
 
             return BadRequest(result.Errors);
+        }
+        [HttpGet]
+        [ActionName("GetObjectList")]
+        public async Task<IActionResult> GetObjectList()
+        {
+            return Ok(await _mediator.Send(new ObjectsList()));
         }
     }
 }
