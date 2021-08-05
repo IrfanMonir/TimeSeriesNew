@@ -1,4 +1,5 @@
 ﻿using Application.DataFields.Command;
+using Application.DataFields.Query;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,12 @@ namespace WebApi.Controllers
                 return StatusCode(201);
 
             return BadRequest(result.Errors);
+        }
+        [HttpGet]
+        [ActionName("GetDataFieldList")]
+        public async Task<IActionResult> GetDataFieldList()
+        {
+            return Ok(await _mediator.Send(new DataFieldList()));
         }
     }
 }

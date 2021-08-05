@@ -2,6 +2,7 @@
 using Application.DataFields;
 using Domain.Entities;
 using Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,9 +27,10 @@ namespace Infrastructure.Services
         }
 
 
-        public Task<List<DataField>> GetDataFieldList()
+        public async Task<List<DataField>> GetDataFieldList()
         {
-            throw new NotImplementedException();
+            var list = await _dbContext.DataFields.ToListAsync();
+            return list;
         }
 
         public void Dispose()

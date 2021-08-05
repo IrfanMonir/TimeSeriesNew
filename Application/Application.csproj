@@ -30,7 +30,6 @@
   <ItemGroup>
     <Folder Include="Buildings\Command\" />
     <Folder Include="Common\Models\" />
-    <Folder Include="DataFields\Query\" />
     <Folder Include="Mapper\" />
   </ItemGroup>
 
