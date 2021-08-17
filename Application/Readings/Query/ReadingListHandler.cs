@@ -19,11 +19,20 @@ namespace Application.Readings.Query
         }
         public async Task<List<ReadingsDto>> Handle(ReadingList request, CancellationToken cancellationToken)
         {
-            var readings = await _readingService.GetReadingList(request.BuildingId, request.ObjectId,
+            //Full List
+            if (request.BuildingId == 0 && request.ObjectId == 0 &&
+                request.DataFieldId == 0 && request.StartTime != null && request.EndTime != null)
+            {
+                var readings = await _readingService.GetReadingList();
+                return _mapper.Map<List<ReadingsDto>>(readings);
+            }
+
+            //Filtered
+            var reading2 = await _readingService.GetReadingList(request.BuildingId, request.ObjectId,
                 request.DataFieldId, request.StartTime, request.EndTime);
 
 
-            var res = _mapper.Map<List<ReadingsDto>>(readings);
+            var res = _mapper.Map<List<ReadingsDto>>(reading2);
             return res;
         }
     }

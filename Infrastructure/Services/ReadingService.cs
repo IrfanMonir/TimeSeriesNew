@@ -36,15 +36,22 @@ namespace Infrastructure.Services
             var list = await _dbContext.Readings
                   .Where(b =>
                      b.BuildingId == buildingId ||
-                      b.ObjectId==objectId ||
-                      b.DataFieldId ==dataFieldId ||
-                     (b.TimeStamp>=startTime && b.TimeStamp<=endTime)
-                 //    (b.TimeStamp.Day >=startTime.Day && b.TimeStamp.Month>=startTime.Month&& b.TimeStamp.Year>=startTime.Year && b.TimeStamp.Hour>=startTime.Hour&&b.TimeStamp.Minute>=startTime.Minute) 
-                    //  (b.TimeStamp.Day <= startTime.Day && b.TimeStamp.Month <= startTime.Month && b.TimeStamp.Year <= startTime.Year && b.TimeStamp.Hour <= startTime.Hour && b.TimeStamp.Minute <= startTime.Minute)
+                      b.ObjectId == objectId ||
+                      b.DataFieldId == dataFieldId ||
+                     (b.TimeStamp >= startTime && b.TimeStamp <= endTime)
+                      //    (b.TimeStamp.Day >=startTime.Day && b.TimeStamp.Month>=startTime.Month&& b.TimeStamp.Year>=startTime.Year && b.TimeStamp.Hour>=startTime.Hour&&b.TimeStamp.Minute>=startTime.Minute) 
+                      //  (b.TimeStamp.Day <= startTime.Day && b.TimeStamp.Month <= startTime.Month && b.TimeStamp.Year <= startTime.Year && b.TimeStamp.Hour <= startTime.Hour && b.TimeStamp.Minute <= startTime.Minute)
                       ).ToListAsync();
-                
-              
+
+
             return list;
+        }
+        public async Task<List<Reading>> GetReadingList()
+        {
+            var readinglist = await _dbContext.Readings.ToListAsync();
+            
+
+            return readinglist;
         }
     }
 }

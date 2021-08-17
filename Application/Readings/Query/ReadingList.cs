@@ -26,5 +26,9 @@ namespace Application.Readings.Query
             StartTime = startTime;
             EndTime = endTime;
         }
+        public ReadingList()
+        {
+
+        }
     }
 }
